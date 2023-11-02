@@ -1138,7 +1138,7 @@ read_body_to_string(struct archive_read *a, struct tar *tar,
 	(void)tar; /* UNUSED */
 	header = (const struct archive_entry_header_ustar *)h;
 	size  = tar_atol(header->size, sizeof(header->size));
-	if ((size > 1048576) || (size < 0)) {
+	if ((size > 8388608) || (size < 0)) {
 		archive_set_error(&a->archive, EINVAL,
 		    "Special header too large");
 		return (ARCHIVE_FATAL);
